@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boreal Blends</title>
+    <link rel="stylesheet" href="pWeb.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" type="image/png" href="imagenes/boreal.png">
+    <link rel="shortcut icon" type="image/png" href="imagenes/boreal.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="imagenes/boreal.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="imagenes/boreal.png">
+</head>
+<body>
+    <!-- Header fijo -->
+    <header class="fixed-header">
+        <div class="menu-container">
+            <div class="hamburger-menu" id="hamburgerMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="logo-container">
+            <img src="./imagenes/borealLogo.png" alt="Boreal Blends Logo" class="main-logo">
+        </div>
+        <div class="cart-container">
+            <button id="btnAbrirCarrito" class="cart-button">
+                <div class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </div>
+            </button>
+        </div>
+    </header>
+
+    <!-- Menú lateral -->
+    <nav class="side-menu" id="sideMenu">
+        <ul>
+            <li><a href="#productos">Blends</a></li>
+            <li><a href="#box">Box</a></li>
+            <li><a href="#accesorios">Accesorios</a></li>
+            <li><a href="#quienes-somos">¿Quiénes somos?</a></li>
+            <li><a href="#contacto">¿Cómo nos contactás?</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <!-- Navegación categorías -->
+        <nav class="categories-nav">
+            <a href="#productos" class="category-button">Blends</a>
+            <a href="#gifts-section" class="category-button">Gifts</a>
+            <a href="#accesorios-section" class="category-button">Accesorios</a>
+        </nav>
+
+        <!-- Imagen de la caja -->
+        <div class="caja-container">
+            <img src="./imagenes/borealFondo.png" alt="Boreal Fondo" class="caja-imagen">
+        </div>
+
+        <!-- Sección de información -->
+        <section class="info-section">
+            <div class="info-card">
+                <img src="./imagenes/borealEnvios.png" alt="Envíos">
+                <p>Envíos a todo el país</p>
+            </div>
+            <div class="info-card">
+                <img src="./imagenes/borealPrecios.png" alt="Precios">
+                <p>Aceptamos todos los medios de pago</p>
+            </div>
+            <div class="info-card">
+                <img src="./imagenes/borealRegalos.png" alt="Regalos">
+                <p>Regala experiencias boreal</p>
+            </div>
+        </section>
+
+        <!-- Sección de productos -->
+        <section id="productos" class="products-section">
+            <h2>Nuestros Blends</h2>
+            <div class="products-grid">
+                <!-- Los productos se cargarán dinámicamente -->
+            </div>
+        </section>
+
+        <!-- Secciones informativas -->
+        <section class="info-sections">
+            <div id="quienes-somos" class="about-section">
+                <h2 class="section-title">¿Quiénes Somos?</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+
+            <div id="contacto" class="contact-section">
+                <h2 class="section-title">¿Cómo nos contactás?</h2>
+                <div class="social-media">
+                    <a href="https://www.instagram.com/borealblends/?igsh=d3o1dWRsbmV1ZTd6#" 
+                       target="_blank" 
+                       class="instagram-link">
+                        <i class="fab fa-instagram"></i>
+                        <span>borealblends</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal del carrito -->
+    <div id="modalCarrito" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Tu Carrito</h3>
+                <button id="btnCerrarCarrito">&times;</button>
+            </div>
+            <div id="carritoItems"></div>
+            <div class="carrito-footer">
+                <div id="totalPrice">Total: $0.00</div>
+                <button id="btnComprar">Comprar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Boreal Blends. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="pWeb.js"></script>
+</body>
+</html>
+
+
