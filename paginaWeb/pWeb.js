@@ -50,72 +50,86 @@ function cargarProductos() {
         {
             id: 1,
             nombre: 'Rosalind Franklin',
-            descripcion: 'Blend premium con notas cítricas',
+            descripcion: 'Blend premium con notas florales',
             precio: 1500,
             imagen: 'rosalindFranklin.png'
         },
         {
             id: 2,
             nombre: 'Lola Mora',
-            descripcion: 'Blend premium con notas florales',
+            descripcion: 'Blend premium con notas cítricas',
             precio: 1500,
             imagen: 'lolaMora.png'
         },
         {
             id: 3,
             nombre: 'Lady Di',
-            descripcion: 'Blend premium con notas frutales',
+            descripcion: 'Blend premium con notas herbales',
             precio: 1500,
             imagen: 'ladyDi.png'
         },
         {
             id: 4,
             nombre: 'Juana Azurduy',
-            descripcion: 'Blend premium con notas especiadas',
+            descripcion: 'Blend premium con notas cítricas',
             precio: 1500,
             imagen: 'juanaAzurduy.png'
         },
         {
             id: 5,
             nombre: 'Frida Khalo',
-            descripcion: 'Blend premium con notas herbales',
+            descripcion: 'Blend premium con notas frutales',
             precio: 1500,
             imagen: 'fridaKhalo.png'
         },
         {
             id: 6,
             nombre: 'Marie Curie',
-            descripcion: 'Blend premium con notas dulces',
+            descripcion: 'Blend premium con notas cítricas',
             precio: 1500,
             imagen: 'marieCurie.png'
         },
         {
             id: 7,
             nombre: 'Cleopatra',
-            descripcion: 'Blend premium con notas tropicales',
+            descripcion: 'Blend premium con notas cítricas',
             precio: 1500,
             imagen: 'cleopatra.png'
         },
         {
             id: 8,
             nombre: 'Ana Frank',
-            descripcion: 'Blend premium con notas de vainilla',
+            descripcion: 'Blend premium con notas tropicales',
             precio: 1500,
             imagen: 'anaFrank.png'
         },
         {
             id: 9,
             nombre: 'Cecilia Grierson',
-            descripcion: 'Blend premium con notas de caramelo',
+            descripcion: 'Blend premium con notas de florales',
             precio: 1500,
             imagen: 'ceciliaGrierson.png'
         },
         {
             id: 10,
             nombre: 'Coco Chanel',
-            descripcion: 'Blend premium con notas elegantes',
+            descripcion: 'Blend premium con notas dulces',
             precio: 1500,
             imagen: 'cocoChanel.png'
+        },
+        {
+            id: 11,
+            nombre: 'Tea Box',
+            descripcion: 'Caja de madera para regalo',
+            precio: 1500,
+            imagen: 'borealCaja2.png'
+        },
+        {
+            id: 12,
+            nombre: 'Infusor de tela',
+            descripcion: 'Infusor de lienzo',
+            precio: 1500,
+            imagen: 'borealAccesorios.png'
         }
     ];
 
@@ -141,6 +155,16 @@ function cargarProductos() {
             </div>
         `;
         productosGrid.appendChild(productoElement);
+    });
+
+    // Desplazamiento a la tercera fila
+    document.querySelectorAll('.gift-box-button, .accesorios-button').forEach(button => {
+        button.addEventListener('click', () => {
+            const thirdRow = productosGrid.children[10]; // Ajusta el índice según sea necesario
+            const offset = 100; // Ajusta este valor según sea necesario
+            const topPosition = thirdRow.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top: topPosition, behavior: 'smooth' });
+        });
     });
 }
 
@@ -187,6 +211,14 @@ function mostrarCaracteristicas(nombreProducto) {
         'Marie Curie': {
             ingredientes: 'Té verde, boldo y limón',
             categoria: 'Detox'
+        },
+        'Tea Box': {
+            ingredientes: 'Caja de madera con 6 blends a elección, 2 infusores de tela reutilizables, posa infusor de cerámica y guía para preparar la infusión.',
+            categoria: 'Gifts'
+        },
+        'Infusor de tela': {
+            ingredientes: 'Saquito de té hecho en lienzo 100% reutilizable.',
+            categoria: 'Accesorios'
         }
     };
 
@@ -371,7 +403,10 @@ function mostrarNotificacion(mensaje) {
         notificacion.remove();
     }, 2000);
 }
-//a
+
+
+
+
 
 
 
