@@ -565,25 +565,38 @@ body {
     }
 
     .btn-cantidad {
-        width: 20px;
-        height: 20px;
+        width: 25px;
+        height: 25px;
         font-size: 1em;
     }
 
     .cantidad-display {
-        min-width: 15px;
+        min-width: 20px;
     }
 
     .carrito-header {
-        grid-template-columns: 2fr 1fr 1fr auto;
+        grid-template-columns: 2fr 1fr auto;
     }
 
     .carrito-item {
-        grid-template-columns: 2fr 1fr 1fr auto;
+        grid-template-columns: 2fr 1fr auto;
     }
 
+    .carrito-header span:nth-child(3),
     .carrito-item span:nth-child(3) {
         display: none; /* Oculta la columna de Precio */
+    }
+
+    .btn-cantidad {
+        background: none;
+        color: var(--primary-color);
+        border: none;
+        font-size: 1.5em;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: color 0.3s ease;
     }
 }
 
