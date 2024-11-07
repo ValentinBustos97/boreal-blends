@@ -573,6 +573,18 @@ body {
     .cantidad-display {
         min-width: 15px;
     }
+
+    .carrito-header {
+        grid-template-columns: 2fr 1fr 1fr auto;
+    }
+
+    .carrito-item {
+        grid-template-columns: 2fr 1fr 1fr auto;
+    }
+
+    .carrito-item span:nth-child(3) {
+        display: none; /* Oculta la columna de Precio */
+    }
 }
 
 /* Estilo de los botones en las cards de productos */
