@@ -426,12 +426,21 @@ body {
 }
 
 .carrito-footer {
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: 2px solid #eee;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.informacion-cliente, .metodo-pago {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.informacion-cliente input, .metodo-pago input {
+    margin-bottom: 10px;
+    width: 100%;
 }
 
 #totalPrice {
@@ -504,6 +513,24 @@ body {
 @media (max-width: 480px) {
     .products-grid {
         grid-template-columns: 1fr;
+    }
+
+    /* Ajustar el tamaño del logo */
+    .navbar-brand img {
+        width: 100px; /* Ajusta este valor según sea necesario */
+        height: auto;
+    }
+
+    /* Alinear productos en el carrito */
+    .carrito-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .carrito-item span {
+        width: 100%;
+        text-align: center;
     }
 }
 
@@ -764,6 +791,38 @@ body {
 
 p {
     margin-bottom: 1.5em; /* Ajusta el valor según lo que necesites */
+}
+
+.informacion-cliente input {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #1E3A8A; /* Azul marino */
+    border-radius: 4px;
+}
+
+.metodo-pago {
+    margin-top: 20px;
+}
+
+.metodo-pago label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.tarjeta-info {
+    display: none;
+    margin-top: 10px;
+}
+
+.tarjeta-info input {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #1E3A8A; /* Azul marino */
+    border-radius: 4px;
 }
 
 

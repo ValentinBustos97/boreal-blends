@@ -337,11 +337,37 @@ function actualizarCarrito() {
     contenido += `
         <div class="carrito-footer">
             <div id="totalPrice">Total: $${total}</div>
+            <div class="informacion-cliente">
+                <h3>Información del Cliente</h3>
+                <input type="text" placeholder="Nombre" id="nombreCliente" required>
+                <input type="email" placeholder="Email" id="emailCliente" required>
+                <input type="tel" placeholder="Teléfono" id="telefonoCliente" required>
+                <input type="text" placeholder="Dirección" id="direccionCliente" required>
+            </div>
+            <div class="metodo-pago">
+                <h3>Medios de Pago</h3>
+                <label>
+                    <input type="radio" name="metodoPago" value="tarjeta" onclick="toggleTarjetaInfo(true)">
+                    Tarjeta de crédito o débito
+                </label>
+                <div class="tarjeta-info">
+                    <input type="text" placeholder="Número de tarjeta" id="numeroTarjeta" required>
+                    <input type="text" placeholder="Titular de tarjeta" id="titularTarjeta" required>
+                    <input type="text" placeholder="Vencimiento (MM/AA)" id="vencimientoTarjeta" required>
+                    <input type="text" placeholder="CVV" id="cvvTarjeta" required>
+                    <input type="text" placeholder="DNI del titular" id="dniTitular" required>
+                </div>
+            </div>
             <button id="btnComprar">Comprar</button>
         </div>
     `;
 
     carritoModal.innerHTML = contenido;
+}
+
+function toggleTarjetaInfo(show) {
+    const tarjetaInfo = document.querySelector('.tarjeta-info');
+    tarjetaInfo.style.display = show ? 'block' : 'none';
 }
 
 function cambiarCantidad(index, cambio) {
@@ -367,15 +393,47 @@ function actualizarContadorCarrito() {
 }
 
 function realizarCompra() {
-    if (carrito.length === 0) {
-        mostrarNotificacion('El carrito está vacío');
+    const metodoPagoSeleccionado = document.querySelector('input[name="metodoPago"]:checked');
+    const camposCliente = ['nombreCliente', 'emailCliente', 'telefonoCliente', 'direccionCliente'];
+    const camposTarjeta = ['numeroTarjeta', 'titularTarjeta', 'vencimientoTarjeta', 'cvvTarjeta', 'dniTitular'];
+
+    if (!metodoPagoSeleccionado) {
+        mostrarNotificacion('Debe seleccionar el método de pago', true);
         return;
     }
-    
-    mostrarNotificacion('¡Gracias por tu compra!');
+
+    const campos = metodoPagoSeleccionado.value === 'tarjeta' ? [...camposCliente, ...camposTarjeta] : camposCliente;
+    const camposIncompletos = campos.some(id => !document.getElementById(id).value.trim());
+
+    if (camposIncompletos) {
+        mostrarNotificacion('Todos los campos deben ser completados', true);
+        return;
+    }
+
+    mostrarNotificacion('Tu pedido fue realizado con éxito, gracias por tu compra');
     carrito = [];
     actualizarCarrito();
     document.getElementById('modalCarrito').style.display = 'none';
+}
+
+function mostrarNotificacion(mensaje, esError = false) {
+    const notificacion = document.createElement('div');
+    notificacion.classList.add('notificacion');
+    notificacion.style.color = esError ? 'red' : 'green';
+    notificacion.style.position = 'fixed';
+    notificacion.style.top = '20px';
+    notificacion.style.left = '50%';
+    notificacion.style.transform = 'translateX(-50%)';
+    notificacion.style.backgroundColor = 'white';
+    notificacion.style.padding = '10px';
+    notificacion.style.border = '1px solid';
+    notificacion.style.borderColor = esError ? 'red' : 'green';
+    notificacion.textContent = mensaje;
+    document.body.appendChild(notificacion);
+    
+    setTimeout(() => {
+        notificacion.remove();
+    }, 3000);
 }
 
 // Categorías
@@ -403,6 +461,9 @@ function mostrarNotificacion(mensaje) {
         notificacion.remove();
     }, 2000);
 }
+
+
+
 
 
 
