@@ -598,6 +598,18 @@ body {
         justify-content: center;
         transition: color 0.3s ease;
     }
+
+    .fixed-header {
+        height: 70px; /* Reduce la altura del header */
+    }
+
+    .main-logo {
+        height: 120px; /* Aumenta el tamaño del logo */
+    }
+
+    .logo-container {
+        padding: 0; /* Reduce el padding para compactar el margen */
+    }
 }
 
 /* Estilo de los botones en las cards de productos */
@@ -889,6 +901,36 @@ p {
     padding: 8px;
     border: 1px solid #1E3A8A; /* Azul marino */
     border-radius: 4px;
+}
+
+/* Ajustes para pantallas entre 460px y 768px */
+@media (max-width: 768px) and (min-width: 460px) {
+    .fixed-header {
+        height: 70px; /* Reduce la altura del header */
+    }
+
+    .main-logo {
+        height: 120px; /* Aumenta el tamaño del logo */
+    }
+
+    .logo-container {
+        padding: 0; /* Reduce el padding para compactar el margen */
+    }
+}
+
+/* Ajustes para pantallas pequeñas como iPhone 12 Pro */
+@media (max-width: 460px) {
+    .fixed-header {
+        height: 70px; /* Reduce la altura del header */
+    }
+
+    .main-logo {
+        height: 120px; /* Aumenta el tamaño del logo */
+    }
+
+    .logo-container {
+        padding: 0; /* Reduce el padding para compactar el margen */
+    }
 }
 
 
