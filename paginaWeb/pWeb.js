@@ -1,11 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
     initApp();
     actualizarContadorCarrito();
+
+    const btnComprar = document.getElementById('btnComprar');
+
+    if (btnComprar) {
+        btnComprar.addEventListener('click', function() {
+            mostrarModalCompra();
+        });
+    } else {
+        // Puedes eliminar o comentar esta línea si no quieres ver el error
+        // console.error('Botón "Comprar" no encontrado');
+    }
 });
 
 function initApp() {
     initMenuHamburguesa();
-    initCarrito();
     initCategorias();
     cargarProductos();
 }
@@ -32,8 +42,9 @@ function initMenuHamburguesa() {
     sideMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
             if (targetElement) {
                 targetElement.scrollIntoView({ behavior: 'smooth' });
                 hamburgerMenu.classList.remove('active');
@@ -43,6 +54,7 @@ function initMenuHamburguesa() {
     });
 }
 
+
 // Productos
 function cargarProductos() {
     const productosGrid = document.querySelector('.products-grid');
@@ -51,84 +63,84 @@ function cargarProductos() {
             id: 1,
             nombre: 'Rosalind Franklin',
             descripcion: 'Blend premium con notas florales',
-            precio: 1500,
+            precio: 5000,
             imagen: 'rosalindFranklin.png'
         },
         {
             id: 2,
             nombre: 'Lola Mora',
             descripcion: 'Blend premium con notas cítricas',
-            precio: 1500,
+            precio: 5000,
             imagen: 'lolaMora.png'
         },
         {
             id: 3,
             nombre: 'Lady Di',
             descripcion: 'Blend premium con notas herbales',
-            precio: 1500,
+            precio: 5000,
             imagen: 'ladyDi.png'
         },
         {
             id: 4,
             nombre: 'Juana Azurduy',
             descripcion: 'Blend premium con notas cítricas',
-            precio: 1500,
+            precio: 5000,
             imagen: 'juanaAzurduy.png'
         },
         {
             id: 5,
             nombre: 'Frida Khalo',
             descripcion: 'Blend premium con notas frutales',
-            precio: 1500,
+            precio: 5000,
             imagen: 'fridaKhalo.png'
         },
         {
             id: 6,
             nombre: 'Marie Curie',
             descripcion: 'Blend premium con notas cítricas',
-            precio: 1500,
+            precio: 5000,
             imagen: 'marieCurie.png'
         },
         {
             id: 7,
             nombre: 'Cleopatra',
             descripcion: 'Blend premium con notas cítricas',
-            precio: 1500,
+            precio: 5000,
             imagen: 'cleopatra.png'
         },
         {
             id: 8,
             nombre: 'Ana Frank',
             descripcion: 'Blend premium con notas tropicales',
-            precio: 1500,
+            precio: 5000,
             imagen: 'anaFrank.png'
         },
         {
             id: 9,
             nombre: 'Cecilia Grierson',
             descripcion: 'Blend premium con notas de florales',
-            precio: 1500,
+            precio: 5000,
             imagen: 'ceciliaGrierson.png'
         },
         {
             id: 10,
             nombre: 'Coco Chanel',
             descripcion: 'Blend premium con notas dulces',
-            precio: 1500,
+            precio: 5000,
             imagen: 'cocoChanel.png'
         },
         {
             id: 11,
             nombre: 'Tea Box',
             descripcion: 'Caja de madera para regalo',
-            precio: 1500,
+            precio: 50000,
             imagen: 'borealCaja2.png'
         },
         {
             id: 12,
             nombre: 'Infusor de tela',
             descripcion: 'Infusor de lienzo',
-            precio: 1500,
+            precio: 2500,
             imagen: 'borealAccesorios.png'
         }
     ];
@@ -136,6 +148,7 @@ function cargarProductos() {
     productos.forEach(producto => {
         const productoElement = document.createElement('div');
         productoElement.classList.add('product-card');
+        productoElement.setAttribute('data-nombre', producto.nombre);
         productoElement.innerHTML = `
             <img src="./imagenes/${producto.imagen}" alt="${producto.nombre}">
             <h3>${producto.nombre}</h3>
@@ -157,14 +170,23 @@ function cargarProductos() {
         productosGrid.appendChild(productoElement);
     });
 
-    // Desplazamiento a la tercera fila
-    document.querySelectorAll('.gift-box-button, .accesorios-button').forEach(button => {
-        button.addEventListener('click', () => {
-            const thirdRow = productosGrid.children[10]; // Ajusta el índice según sea necesario
-            const offset = 100; // Ajusta este valor según sea necesario
-            const topPosition = thirdRow.getBoundingClientRect().top + window.scrollY - offset;
+    // Desplazamiento a productos específicos
+    document.querySelector('.gift-box-button').addEventListener('click', () => {
+        const targetElement = productosGrid.querySelector('[data-nombre="Tea Box"]');
+        if (targetElement) {
+            const offset = -90; // Ajusta este valor según sea necesario
+            const topPosition = targetElement.getBoundingClientRect().top + window.scrollY + offset;
             window.scrollTo({ top: topPosition, behavior: 'smooth' });
-        });
+        }
+    });
+
+    document.querySelector('.accesorios-button').addEventListener('click', () => {
+        const targetElement = productosGrid.querySelector('[data-nombre="Infusor de tela"]');
+        if (targetElement) {
+            const offset = -90; // Ajusta este valor según sea necesario
+            const topPosition = targetElement.getBoundingClientRect().top + window.scrollY + offset;
+            window.scrollTo({ top: topPosition, behavior: 'smooth' });
+        }
     });
 }
 
@@ -217,7 +239,7 @@ function mostrarCaracteristicas(nombreProducto) {
             categoria: 'Gifts'
         },
         'Infusor de tela': {
-            ingredientes: 'Saquito de té hecho en lienzo 100% reutilizable.',
+            ingredientes: 'Saquito de té hecho en lienzo 100% reutilizabile.',
             categoria: 'Accesorios'
         }
     };
@@ -246,196 +268,6 @@ function mostrarCaracteristicas(nombreProducto) {
     });
 }
 
-// Carrito
-let carrito = [];
-
-function initCarrito() {
-    const btnAbrirCarrito = document.getElementById('btnAbrirCarrito');
-    const btnCerrarCarrito = document.getElementById('btnCerrarCarrito');
-    const modalCarrito = document.getElementById('modalCarrito');
-    const btnComprar = document.getElementById('btnComprar');
-
-    btnAbrirCarrito.addEventListener('click', () => {
-        modalCarrito.style.display = 'flex';
-        actualizarCarrito();
-    });
-
-    btnCerrarCarrito.addEventListener('click', () => {
-        modalCarrito.style.display = 'none';
-    });
-
-    modalCarrito.addEventListener('click', (e) => {
-        if (e.target === modalCarrito) {
-            modalCarrito.style.display = 'none';
-        }
-    });
-
-    btnComprar.addEventListener('click', realizarCompra);
-}
-
-function agregarAlCarrito(producto) {
-    const itemExistente = carrito.find(item => item.id === producto.id);
-    
-    if (itemExistente) {
-        itemExistente.cantidad++;
-    } else {
-        carrito.push({
-            id: producto.id,
-            nombre: producto.nombre,
-            precio: producto.precio,
-            cantidad: 1
-        });
-    }
-    
-    actualizarContadorCarrito();
-    mostrarMensaje('Producto agregado al carrito');
-}
-
-function eliminarDelCarrito(index) {
-    carrito.splice(index, 1);
-    actualizarCarrito();
-    actualizarContadorCarrito();
-}
-
-function actualizarCarrito() {
-    const carritoModal = document.querySelector('.modal-content');
-    if (!carritoModal) return;
-
-    let contenido = `
-        <h2>Tu Carrito</h2>
-        <div class="carrito-header">
-            <span>Producto</span>
-            <span>Cantidad</span>
-            <span>Precio</span>
-            <span>Total</span>
-            <span></span>
-        </div>
-    `;
-    
-    let total = 0;
-
-    carrito.forEach((item, index) => {
-        const subtotal = item.precio * item.cantidad;
-        total += subtotal;
-        contenido += `
-            <div class="carrito-item">
-                <span class="producto-nombre">${item.nombre}</span>
-                <div class="cantidad-controls">
-                    <button class="btn-cantidad" onclick="cambiarCantidad(${index}, -1)">-</button>
-                    <span class="cantidad-display">${item.cantidad}</span>
-                    <button class="btn-cantidad" onclick="cambiarCantidad(${index}, 1)">+</button>
-                </div>
-                <span class="precio-unitario">$${item.precio}</span>
-                <span class="precio-total">$${subtotal}</span>
-                <button onclick="eliminarDelCarrito(${index})" class="btn-eliminar">
-                    <i class="fas fa-trash-alt"></i>
-                </button>
-            </div>
-        `;
-    });
-
-    contenido += `
-        <div class="carrito-footer">
-            <div id="totalPrice">Total: $${total}</div>
-            <div class="informacion-cliente">
-                <h3>Información del Cliente</h3>
-                <input type="text" placeholder="Nombre" id="nombreCliente" required>
-                <input type="email" placeholder="Email" id="emailCliente" required>
-                <input type="tel" placeholder="Teléfono" id="telefonoCliente" required>
-                <input type="text" placeholder="Dirección" id="direccionCliente" required>
-            </div>
-            <div class="metodo-pago">
-                <h3>Medios de Pago</h3>
-                <label>
-                    <input type="radio" name="metodoPago" value="tarjeta" onclick="toggleTarjetaInfo(true)">
-                    Tarjeta de crédito o débito
-                </label>
-                <div class="tarjeta-info">
-                    <input type="text" placeholder="Número de tarjeta" id="numeroTarjeta" required>
-                    <input type="text" placeholder="Titular de tarjeta" id="titularTarjeta" required>
-                    <input type="text" placeholder="Vencimiento (MM/AA)" id="vencimientoTarjeta" required>
-                    <input type="text" placeholder="CVV" id="cvvTarjeta" required>
-                    <input type="text" placeholder="DNI del titular" id="dniTitular" required>
-                </div>
-            </div>
-            <button id="btnComprar">Comprar</button>
-        </div>
-    `;
-
-    carritoModal.innerHTML = contenido;
-}
-
-function toggleTarjetaInfo(show) {
-    const tarjetaInfo = document.querySelector('.tarjeta-info');
-    tarjetaInfo.style.display = show ? 'block' : 'none';
-}
-
-function cambiarCantidad(index, cambio) {
-    if (carrito[index].cantidad + cambio > 0) {
-        carrito[index].cantidad += cambio;
-        actualizarCarrito();
-        actualizarContadorCarrito();
-    }
-}
-
-function actualizarContadorCarrito() {
-    const contador = document.querySelector('.cart-count');
-    if (contador) {
-        const totalItems = carrito.reduce((total, item) => total + item.cantidad, 0);
-        contador.textContent = totalItems;
-        
-        if (totalItems > 0) {
-            contador.style.display = 'block';
-        } else {
-            contador.style.display = 'none';
-        }
-    }
-}
-
-function realizarCompra() {
-    const metodoPagoSeleccionado = document.querySelector('input[name="metodoPago"]:checked');
-    const camposCliente = ['nombreCliente', 'emailCliente', 'telefonoCliente', 'direccionCliente'];
-    const camposTarjeta = ['numeroTarjeta', 'titularTarjeta', 'vencimientoTarjeta', 'cvvTarjeta', 'dniTitular'];
-
-    if (!metodoPagoSeleccionado) {
-        mostrarNotificacion('Debe seleccionar el método de pago', true);
-        return;
-    }
-
-    const campos = metodoPagoSeleccionado.value === 'tarjeta' ? [...camposCliente, ...camposTarjeta] : camposCliente;
-    const camposIncompletos = campos.some(id => !document.getElementById(id).value.trim());
-
-    if (camposIncompletos) {
-        mostrarNotificacion('Todos los campos deben ser completados', true);
-        return;
-    }
-
-    mostrarNotificacion('Tu pedido fue realizado con éxito, gracias por tu compra');
-    carrito = [];
-    actualizarCarrito();
-    document.getElementById('modalCarrito').style.display = 'none';
-}
-
-function mostrarNotificacion(mensaje, esError = false) {
-    const notificacion = document.createElement('div');
-    notificacion.classList.add('notificacion');
-    notificacion.style.color = esError ? 'red' : 'green';
-    notificacion.style.position = 'fixed';
-    notificacion.style.top = '20px';
-    notificacion.style.left = '50%';
-    notificacion.style.transform = 'translateX(-50%)';
-    notificacion.style.backgroundColor = 'white';
-    notificacion.style.padding = '10px';
-    notificacion.style.border = '1px solid';
-    notificacion.style.borderColor = esError ? 'red' : 'green';
-    notificacion.textContent = mensaje;
-    document.body.appendChild(notificacion);
-    
-    setTimeout(() => {
-        notificacion.remove();
-    }, 3000);
-}
-
 // Categorías
 function initCategorias() {
     document.querySelectorAll('.category-button').forEach(button => {
@@ -450,7 +282,42 @@ function initCategorias() {
     });
 }
 
-// Notificaciones
+// Carrito
+function agregarAlCarrito(producto) {
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    const itemExistente = carrito.find(item => item.id === producto.id);
+    
+    if (itemExistente) {
+        itemExistente.cantidad++;
+    } else {
+        carrito.push({
+            id: producto.id,
+            nombre: producto.nombre,
+            precio: producto.precio,
+            cantidad: 1
+        });
+    }
+    
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    actualizarContadorCarrito();
+    mostrarNotificacion('Producto agregado al carrito');
+}
+
+function actualizarContadorCarrito() {
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    const contador = document.querySelector('.cart-count');
+    if (contador) {
+        const totalItems = carrito.reduce((total, item) => total + item.cantidad, 0);
+        contador.textContent = totalItems;
+        
+        if (totalItems > 0) {
+            contador.style.display = 'block';
+        } else {
+            contador.style.display = 'none';
+        }
+    }
+}
+
 function mostrarNotificacion(mensaje) {
     const notificacion = document.createElement('div');
     notificacion.classList.add('notificacion');
@@ -461,6 +328,8 @@ function mostrarNotificacion(mensaje) {
         notificacion.remove();
     }, 2000);
 }
+
+
 
 
 

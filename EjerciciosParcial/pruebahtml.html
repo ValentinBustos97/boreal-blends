@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="pWeb.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="icon" type="image/png" href="imagenes/boreal.png">
+    <link rel="shortcut icon" type="image/png" href="imagenes/boreal.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="imagenes/boreal.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="imagenes/boreal.png">
 </head>
 <body>
     <!-- Header fijo -->
@@ -22,7 +25,7 @@
             <img src="./imagenes/logoSFondo.png" alt="Logo sin fondo" class="main-logo">
         </div>
         <div class="cart-container">
-            <button id="btnAbrirCarrito" class="cart-button" onclick="window.location.href='carrito.html'">
+            <button id="btnAbrirCarrito" class="cart-button">
                 <div class="cart-icon">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="cart-count">0</span>
@@ -47,8 +50,8 @@
         <!-- Navegación categorías -->
         <nav class="categories-nav">
             <a href="#productos" class="category-button">Blends</a>
-            <a href="#gift-box" class="gift-box-button category-button">Gift Box</a>
-            <a href="#accesorios" class="accesorios-button category-button">Accesorios</a>
+            <a href="#" class="gift-box-button category-button">Gift Box</a>
+            <a href="#" class="accesorios-button category-button">Accesorios</a>
         </nav>
 
         <!-- Imagen de la caja -->
@@ -85,7 +88,9 @@
             <div id="quienes-somos" class="about-section">
                 <h2 class="section-title">¿Quiénes Somos?</h2>
                 <p>Somos dos amigas y colegas médicas que impulsadas por las ganas de emprender, decidimos transformar la hora de tomar un té en una experiencia más gourmet.</p>
+
                 <p>Investigamos mucho antes de crear nuestros blends, a fin de fusionar sabores y propiedades, dando lugar no solo a infusiones deliciosas sino también beneficiosas para nuestra salud.</p>
+
                 <p>Quisimos innovar en un producto que además de su exquisitez, represente a mujeres que dejaron una huella en nuestra historia. Cada blend tiene un poquito de ellas. Nuestro packaging y accesorios son 100% reutilizables, hechos a mano y con mucho amor.</p>
             </div>
 
@@ -103,10 +108,34 @@
         </section>
     </main>
 
+    <!-- Modal del carrito -->
+    <div id="modalCarrito" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Tu Carrito</h3>
+                <button id="btnCerrarCarrito">&times;</button>
+            </div>
+            <div id="carritoItems"></div>
+            <div class="carrito-footer">
+                <div id="totalPrice">Total: $0.00</div>
+                <button id="btnComprar">Comprar</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <p>&copy; 2024 Boreal Blends. Todos los derechos reservados.</p>
     </footer>
+
+
+    <div id="modalCompra" class="modal-compra" style="display: none;">
+        <div class="modal-compra-content">
+            <h2>¡Compra exitosa!</h2>
+            <p>Tu compra fue realizada con éxito.</p>
+            <button onclick="volverPaginaPrincipal()">Volver a la página principal</button>
+        </div>
+    </div>
 
     <script src="pWeb.js"></script>
 </body>
