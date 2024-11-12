@@ -465,44 +465,64 @@ body {
     }
 }
 
-@media (max-width: 480px) {
-    .products-grid {
-        grid-template-columns: 1fr;
-    }
-
-    /* Ajustar el tamaño del logo */
-    .navbar-brand img {
-        width: 100px; /* Ajusta este valor según sea necesario */
-        height: auto;
-    }
-
+@media (max-width: 460px) {
     .fixed-header {
-        height: 70px; /* Reduce la altura del header */
+        height: 70px;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .table {
+        width: 100%;
+        min-width: 300px;
+    }
+
+    .table th, .table td {
+        font-size: 0.8em;
+        padding: 5px;
+    }
+
+    .navbar-brand img {
+        width: auto;
+        height: 60px;
     }
 
     .main-logo {
-        width: 100px; 
+        width: 100px;
         height: auto;
     }
 
     .logo-container {
-        padding: 0; /* Reduce el padding para compactar el margen */
+        padding: 0;
     }
 
     .product-card h3 {
         display: flex;
-        flex-direction: column; /* Coloca el nombre en dos líneas */
+        flex-direction: column;
         align-items: center;
+        text-align: center;
     }
 
-    /*  Centrar el título del carrito */
     .main-content h1 {
-        text-align: center; /* Centra el texto */
-        margin-left: 0; /* Elimina el margen izquierdo */
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .btn-cantidad,
+    .btn-eliminar {
+        background-color: transparent;
+        color: #2c3e50;
+        border: none;
+        font-size: 1.2em;
+    }
+
+    .btn-cantidad:active,
+    .btn-eliminar:active {
+        background-color: transparent;
     }
 }
-
-
 
 .social-media {
     display: flex;
@@ -584,60 +604,6 @@ body {
 
 p {
     margin-bottom: 1.5em; /* Ajusta el valor según lo que necesites */
-}
-
-
-/* Ajustes para pantallas entre 460px y 768px */
-@media (max-width: 768px) and (min-width: 460px) {
-    .fixed-header {
-        height: 70px; /* Reduce la altura del header */
-    }
-
-    .main-logo {
-        height: 120px; /* Aumenta el tamaño del logo */
-    }
-
-    .logo-container {
-        padding: 0; /* Reduce el padding para compactar el margen */
-    }
-}
-
-@media (max-width: 460px) {
-    .fixed-header {
-        height: 70px; /* Reduce la altura del header */
-    }
-
-    .main-logo {
-        height: 120px; /* Aumenta el tamaño del logo */
-    }
-
-    .logo-container {
-        padding: 0; /* Reduce el padding para compactar el margen */
-    }
-
-    .table-responsive {
-        overflow-x: auto; /* Permite el desplazamiento horizontal */
-    }
-
-    .table {
-        width: 100%;
-        min-width: 400px; /* Ajusta según sea necesario */
-    }
-
-    .table th, .table td {
-        font-size: 0.8em; /* Ajusta el tamaño de fuente */
-        padding: 5px; /* Reduce el padding */
-    }
-
-    .table th:nth-child(3), /* Oculta el encabezado de la columna de precio */
-    .table td:nth-child(3) { /* Oculta las celdas de la columna de precio */
-        display: none;
-    }
-
-    .main-content h1 {
-        text-align: center; /* Centra el texto */
-        margin-left: 0; /* Elimina el margen izquierdo */
-    }
 }
 
 .modal-compra {
@@ -870,16 +836,7 @@ input[type="checkbox"] {
     background-color: #5a6a7e; 
 }
 
-@media (max-width: 480px) {
-    .btn-cantidad {
-        background-color: transparent;
-        color: #2c3e50;
-        width: auto;
-        height: auto;
-        font-size: 1.5em;
-        border-radius: 0;
-    }
-}
+
 
 .btn-eliminar {
     background-color: #f0f0f0; /* Color de fondo inicial */
