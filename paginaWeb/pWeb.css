@@ -481,11 +481,24 @@ body {
     }
 
     .main-logo {
-        height: 120px; /* Aumenta el tamaño del logo */
+        width: 100px; 
+        height: auto;
     }
 
     .logo-container {
         padding: 0; /* Reduce el padding para compactar el margen */
+    }
+
+    .product-card h3 {
+        display: flex;
+        flex-direction: column; /* Coloca el nombre en dos líneas */
+        align-items: center;
+    }
+
+    /*  Centrar el título del carrito */
+    .main-content h1 {
+        text-align: center; /* Centra el texto */
+        margin-left: 0; /* Elimina el margen izquierdo */
     }
 }
 
