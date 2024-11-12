@@ -404,6 +404,10 @@ body {
     margin-bottom: 20px;
 }
 
+a {
+    text-decoration: none;
+}
+
 #btnComprar {
     background-color: #004080;
     color: white;
@@ -881,7 +885,7 @@ input[type="checkbox"] {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        transition: none; /* Elimina la transición */
+        transition: color 0.3s ease;
     }
 
     .cantidad-controls {

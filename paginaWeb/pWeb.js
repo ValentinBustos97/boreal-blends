@@ -12,6 +12,35 @@ document.addEventListener('DOMContentLoaded', function() {
         // Puedes eliminar o comentar esta línea si no quieres ver el error
         // console.error('Botón "Comprar" no encontrado');
     }
+
+    // Agregar eventos a los botones del menú principal
+    document.querySelector('.categories-nav .category-button[href="#blends"]').addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetElement = document.getElementById('productos');
+        if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+
+    document.querySelector('.categories-nav .category-button[href="#gift-box"]').addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetElement = document.querySelector('.products-grid [data-nombre="Tea Box"]');
+        if (targetElement) {
+            const offset = -90; // Ajusta este valor según sea necesario
+            const topPosition = targetElement.getBoundingClientRect().top + window.scrollY + offset;
+            window.scrollTo({ top: topPosition, behavior: 'smooth' });
+        }
+    });
+
+    document.querySelector('.categories-nav .category-button[href="#accesorios"]').addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetElement = document.querySelector('.products-grid [data-nombre="Infusor de tela"]');
+        if (targetElement) {
+            const offset = -90; // Ajusta este valor según sea necesario
+            const topPosition = targetElement.getBoundingClientRect().top + window.scrollY + offset;
+            window.scrollTo({ top: topPosition, behavior: 'smooth' });
+        }
+    });
 });
 
 function initApp() {
