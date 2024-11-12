@@ -881,7 +881,7 @@ input[type="checkbox"] {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        transition: color 0.3s ease;
+        transition: none; /* Elimina la transición */
     }
 
     .cantidad-controls {
@@ -896,15 +896,24 @@ input[type="checkbox"] {
         margin-left: 0;
     }
 
+    /* Desactiva el hover en dispositivos táctiles */
+    .btn-cantidad:hover,
+    .btn-eliminar:hover,
     .agregar-carrito:hover,
-    .btn-comprar:hover,
-    .btn-eliminar:hover
     .instagram-link:hover,
     .email-link:hover {
-        background-color: inherit; /* Mantiene el color original en móviles */
+        background: none;
         color: inherit;
     }
 
+    .btn-cantidad:active,
+    .btn-eliminar:active,
+    .agregar-carrito:active,
+    .instagram-link:active,
+    .email-link:active {
+        background: none;
+        color: #2c3e50;
+    }
 }
 
 
