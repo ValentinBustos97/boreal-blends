@@ -428,115 +428,7 @@ body {
     color: white;
 }
 
-/* Responsive */
-@media (max-width: 1200px) {
-    .products-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
 
-@media (max-width: 900px) {
-    .products-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .fixed-header {
-        height: 100px;
-    }
-
-    .main-logo {
-        height: 80px;
-    }
-
-    .info-section {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-    
-    .categories-nav {
-        flex-wrap: wrap;
-    }
-
-    .info-sections {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 460px) {
-    .fixed-header {
-        height: 70px;
-    }
-
-    .table-responsive {
-        overflow-x: auto;
-    }
-
-    .table {
-        width: 100%;
-        min-width: 300px;
-    }
-
-    .table th, .table td {
-        font-size: 0.8em;
-        padding: 5px;
-    }
-
-    .navbar-brand img {
-        width: 100px; /* Ajusta este valor según sea necesario */
-        height: auto;
-    }
-
-    .logo-container {
-        padding: 0;
-    }
-
-    .main-content h1 {
-        text-align: center;
-        margin-left: 0;
-    }
-
-    /* Ajustar el logo */
-    .main-logo {
-        width: auto;
-        height: 60px;
-    }
-
-    /* Centrar productos en la pantalla */
-    .product-card {
-        width: 100%;
-        margin: 0 auto;
-    }
-
-    .table th:nth-child(3),
-    .table td:nth-child(3) {
-        display: none; /* Oculta la columna de precio */
-    }
-
-    .product-card h3 {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    /* Botones de cantidad */
-    .btn-cantidad {
-        background-color: transparent;
-        color: #2c3e50;
-        border: none;
-        font-size: 1.2em;
-        margin: 0 5px;
-    }
-
-    /* Centrar el título del carrito */
-    .main-content h1 {
-        text-align: center;
-        margin-left: 0;
-    }
-}
 
 .social-media {
     display: flex;
@@ -748,8 +640,6 @@ h2 {
     gap: 10px;
 }
 
-
-
 .cantidad-display {
     font-weight: bold;
     min-width: 20px;
@@ -872,6 +762,143 @@ input[type="checkbox"] {
 .btn-eliminar:hover {
     background-color: #fa4242; /* Color de fondo rojo suave al hacer hover */
 }
+
+
+
+
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .fixed-header {
+        height: 100px;
+    }
+
+    .main-logo {
+        height: 80px;
+    }
+
+    .info-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .categories-nav {
+        flex-wrap: wrap;
+    }
+
+    .info-sections {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 460px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    .background-image {
+        width: 100%;
+        height: auto;
+    }
+    .fixed-header {
+        height: 70px;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .table {
+        width: 100%;
+        min-width: 300px;
+    }
+
+    .table th, .table td {
+        font-size: 0.8em;
+        padding: 5px;
+    }
+
+    .navbar-brand img {
+        width: 100px; /* Ajusta este valor según sea necesario */
+        height: auto;
+    }
+
+    .logo-container {
+        padding: 0;
+    }
+
+    .main-content h1 {
+        text-align: center;
+        margin-left: 0;
+    }
+
+    /* Ajustar el logo */
+    .main-logo {
+        width: auto;
+        height: 60px;
+    }
+
+    /* Centrar productos en la pantalla */
+    .product-card {
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .table th:nth-child(3),
+    .table td:nth-child(3) {
+        display: none; /* Oculta la columna de precio */
+    }
+
+    .product-card h3 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Botones de cantidad */
+    .btn-cantidad {
+        background: none; /* Elimina el fondo */
+        color: #2c3e50; /* Color del texto */
+        border: none;
+        font-size: 1.5em;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: color 0.3s ease;
+    }
+
+    .cantidad-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Centrar el título del carrito */
+    .main-content h1 {
+        text-align: center;
+        margin-left: 0;
+    }
+
+}
+
+
 
 
 
