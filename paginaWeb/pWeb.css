@@ -634,11 +634,7 @@ h2 {
     font-size: 1.5em;
 }
 
-.cantidad-controls {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+
 
 .cantidad-display {
     font-weight: bold;
@@ -882,20 +878,16 @@ input[type="checkbox"] {
         align-items: center;
         justify-content: center;
         transition: color 0.3s ease;
+        outline: none; /* Elimina el borde de enfoque */
     }
 
-    .cantidad-controls {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    .btn-cantidad:focus,
+    .btn-eliminar:focus,
+    .agregar-carrito:focus,
+    .instagram-link:focus,
+    .email-link:focus {
+        outline: none; /* Elimina el borde de enfoque al hacer clic */
     }
-
-    /* Centrar el título del carrito */
-    .main-content h1 {
-        text-align: center;
-        margin-left: 0;
-    }
-
 
     .btn-cantidad:active,
     .btn-eliminar:active,
@@ -906,11 +898,12 @@ input[type="checkbox"] {
         color: #2c3e50; /* Mantiene el color original */
     }
 
-    .cantidad-controls {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    /* Centrar el título del carrito */
+    .main-content h1 {
+        text-align: center;
+        margin-left: 0;
     }
+
 }
 
 
