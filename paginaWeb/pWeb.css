@@ -485,17 +485,34 @@ body {
     }
 
     .navbar-brand img {
-        width: auto;
-        height: 60px;
-    }
-
-    .main-logo {
-        width: 100px;
+        width: 100px; /* Ajusta este valor según sea necesario */
         height: auto;
     }
 
     .logo-container {
         padding: 0;
+    }
+
+    .main-content h1 {
+        text-align: center;
+        margin-left: 0;
+    }
+
+    /* Ajustar el logo */
+    .main-logo {
+        width: auto;
+        height: 60px;
+    }
+
+    /* Centrar productos en la pantalla */
+    .product-card {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .table th:nth-child(3),
+    .table td:nth-child(3) {
+        display: none; /* Oculta la columna de precio */
     }
 
     .product-card h3 {
@@ -505,22 +522,19 @@ body {
         text-align: center;
     }
 
-    .main-content h1 {
-        text-align: center;
-        margin-left: 0;
-    }
-
-    .btn-cantidad,
-    .btn-eliminar {
+    /* Botones de cantidad */
+    .btn-cantidad {
         background-color: transparent;
         color: #2c3e50;
         border: none;
         font-size: 1.2em;
+        margin: 0 5px;
     }
 
-    .btn-cantidad:active,
-    .btn-eliminar:active {
-        background-color: transparent;
+    /* Centrar el título del carrito */
+    .main-content h1 {
+        text-align: center;
+        margin-left: 0;
     }
 }
 
