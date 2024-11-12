@@ -902,6 +902,7 @@ input[type="checkbox"] {
     .instagram-link:hover,
     .email-link:hover {
         background-color: inherit; /* Mantiene el color original en móviles */
+        color: inherit;
     }
 
 }
