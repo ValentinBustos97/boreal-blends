@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     mostrarCarrito();
     document.getElementById('btnComprar').addEventListener('click', realizarCompra);
+    document.getElementById('toggleTarjeta').addEventListener('change', toggleCamposTarjeta);
 });
 
 function mostrarCarrito() {
@@ -10,6 +11,7 @@ function mostrarCarrito() {
 
     if (carrito.length === 0) {
         carritoItems.innerHTML = '<tr><td colspan="5" class="text-center">Tu carrito está vacío.</td></tr>';
+        document.getElementById('totalPrice').textContent = total.toFixed(2);
         return;
     }
 
@@ -20,20 +22,29 @@ function mostrarCarrito() {
         contenido += `
             <tr>
                 <td>${item.nombre}</td>
-                <td>$${item.precio.toFixed(2)}</td>
-                <td>${item.cantidad}</td>
-                <td>$${subtotal.toFixed(2)}</td>
-                <td><button class="btn btn-danger btn-sm" onclick="eliminarProducto(${item.id})">Eliminar</button></td>
+                <td>
+                    <button class="btn-cantidad" onclick="cambiarCantidad(${item.id}, -1)">-</button>
+                    <span class="cantidad-display">${item.cantidad}</span>
+                    <button class="btn-cantidad" onclick="cambiarCantidad(${item.id}, 1)">+</button>
+                </td>
+                <td>$${Math.round(item.precio)}</td>
+                <td>$${Math.round(subtotal)}</td>
+                <td>
+                    <button class="btn-eliminar" onclick="eliminarProducto(${item.id})">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </td>
             </tr>
         `;
     });
 
     carritoItems.innerHTML = contenido;
-    document.getElementById('totalPrice').textContent = total.toFixed(2);
+    document.getElementById('totalPrice').textContent = Math.round(total);
 }
 
 function realizarCompra() {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    limpiarMensajesError();
     const camposCompletos = validarCampos();
 
     if (carrito.length === 0) {
@@ -46,9 +57,16 @@ function realizarCompra() {
         return;
     }
 
+    ocultarMensajeError();
+
     document.getElementById('modalCompra').style.display = 'block';
     localStorage.removeItem('carrito');
     mostrarCarrito();
+}
+
+function ocultarMensajeError() {
+    const mensajeError = document.getElementById('mensajeError');
+    mensajeError.style.display = 'none';
 }
 
 function validarCampos() {
@@ -102,10 +120,20 @@ function validarCampos() {
 function mostrarErrorCampo(selector, mensaje) {
     const campo = document.querySelector(selector);
     campo.style.borderColor = 'red';
-    const error = document.createElement('div');
-    error.textContent = mensaje;
-    error.style.color = 'red';
-    campo.parentNode.insertBefore(error, campo.nextSibling);
+    if (!campo.nextElementSibling || !campo.nextElementSibling.classList.contains('error-message')) {
+        const error = document.createElement('div');
+        error.textContent = mensaje;
+        error.style.color = 'red';
+        error.classList.add('error-message');
+        campo.parentNode.insertBefore(error, campo.nextElementSibling);
+    }
+}
+
+function limpiarMensajesError() {
+    const mensajesError = document.querySelectorAll('.error-message');
+    mensajesError.forEach(mensaje => mensaje.remove());
+    const campos = document.querySelectorAll('input');
+    campos.forEach(campo => campo.style.borderColor = '');
 }
 
 function mostrarMensajeError(mensaje) {
@@ -129,4 +157,24 @@ function eliminarProducto(id) {
 function togglePaymentForm() {
     const paymentForm = document.getElementById('paymentForm');
     paymentForm.classList.toggle('active');
+}
+
+function toggleCamposTarjeta() {
+    const camposTarjeta = document.getElementById('camposTarjeta');
+    camposTarjeta.style.display = camposTarjeta.style.display === 'none' ? 'block' : 'none';
+}
+
+function cambiarCantidad(id, delta) {
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    const producto = carrito.find(item => item.id === id);
+
+    if (producto) {
+        producto.cantidad += delta;
+        if (producto.cantidad < 1) {
+            producto.cantidad = 1; // Evita que la cantidad sea menor que 1
+        }
+    }
+
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    mostrarCarrito(); // Actualiza la vista del carrito
 }
