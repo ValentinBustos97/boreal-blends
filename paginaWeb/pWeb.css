@@ -896,21 +896,6 @@ input[type="checkbox"] {
         margin-left: 0;
     }
 
-    .btn-cantidad,
-    .btn-eliminar,
-    .agregar-carrito,
-    .instagram-link,
-    .email-link {
-        background: none;
-        color: #2c3e50;
-        border: none;
-        font-size: 1.5em;
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        transition: color 0.3s ease;
-    }
 
     .btn-cantidad:active,
     .btn-eliminar:active,
