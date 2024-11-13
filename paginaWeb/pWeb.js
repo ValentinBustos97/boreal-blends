@@ -162,7 +162,7 @@ function cargarProductos() {
             id: 11,
             nombre: 'Tea Box',
             descripcion: 'Caja de madera para regalo',
-            precio: 50000,
+            precio: 48000,
             imagen: 'borealCaja2.png'
         },
         {
