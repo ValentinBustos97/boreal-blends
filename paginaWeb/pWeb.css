@@ -753,6 +753,16 @@ input[type="checkbox"] {
     background-color: #f88181;
 }
 
+.close-button {
+
+
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #666;
+}
+
 /* Responsive */
 @media (max-width: 1200px) {
     .products-grid {
