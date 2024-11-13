@@ -900,6 +900,11 @@ input[type="checkbox"] {
         background: none;
         color: #2c3e50;
     }
+
+    .product-card .agregar-carrito:active {
+        background-color: #34495e; 
+        color: white; 
+    }
 }
 
 .error-message {
