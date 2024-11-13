@@ -2,17 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initApp();
     actualizarContadorCarrito();
 
-    const btnComprar = document.getElementById('btnComprar');
-
-    if (btnComprar) {
-        btnComprar.addEventListener('click', function() {
-            mostrarModalCompra();
-        });
-    } else {
-        // Puedes eliminar o comentar esta línea si no quieres ver el error
-        // console.error('Botón "Comprar" no encontrado');
-    }
-
     // Agregar eventos a los botones del menú principal
     document.querySelector('.categories-nav .category-button[href="#blends"]').addEventListener('click', function(e) {
         e.preventDefault();
@@ -67,7 +56,7 @@ function initMenuHamburguesa() {
         }
     });
 
-    // Navegación suave
+    // Navegación 
     sideMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
@@ -203,7 +192,7 @@ function cargarProductos() {
     document.querySelector('.gift-box-button').addEventListener('click', () => {
         const targetElement = productosGrid.querySelector('[data-nombre="Tea Box"]');
         if (targetElement) {
-            const offset = -90; // Ajusta este valor según sea necesario
+            const offset = -90; 
             const topPosition = targetElement.getBoundingClientRect().top + window.scrollY + offset;
             window.scrollTo({ top: topPosition, behavior: 'smooth' });
         }
@@ -212,7 +201,7 @@ function cargarProductos() {
     document.querySelector('.accesorios-button').addEventListener('click', () => {
         const targetElement = productosGrid.querySelector('[data-nombre="Infusor de tela"]');
         if (targetElement) {
-            const offset = -90; // Ajusta este valor según sea necesario
+            const offset = -90; 
             const topPosition = targetElement.getBoundingClientRect().top + window.scrollY + offset;
             window.scrollTo({ top: topPosition, behavior: 'smooth' });
         }
@@ -360,7 +349,6 @@ function mostrarNotificacion(mensaje) {
 
 window.addEventListener('pageshow', function(event) {
     if (event.persisted) {
-        // La página se está mostrando desde el caché del navegador
         actualizarContadorCarrito();
     }
 });
