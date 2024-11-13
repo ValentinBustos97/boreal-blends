@@ -358,6 +358,13 @@ function mostrarNotificacion(mensaje) {
     }, 2000);
 }
 
+window.addEventListener('pageshow', function(event) {
+    if (event.persisted) {
+        // La página se está mostrando desde el caché del navegador
+        actualizarContadorCarrito();
+    }
+});
+
 
 
 
